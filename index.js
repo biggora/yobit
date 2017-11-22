@@ -211,6 +211,11 @@ function executeRequest(options, requestDesc, callback)
 // Public Functions
 //
 
+Yobit.prototype.getPairInfo = function getFee(callback, pair)
+{
+    this.publicRequest('info', {currencyPair: pair}, callback)
+}
+
 Yobit.prototype.getTicker = function getTicker(callback, pair)
 {
     this.publicRequest('ticker/' + pair, {currencyPair: pair}, callback)
@@ -262,6 +267,11 @@ Yobit.prototype.getLendDepth = function getLendDepth(callback, symbol)
 Yobit.prototype.getInfo = function getInfo(callback)
 {
     this.privateRequest('getInfo', {}, callback)
+}
+
+Yobit.prototype.getActiveOrders = function getActiveOrders(callback,symbol)
+{
+    this.privateRequest('active_orders', {symbol: symbol}, callback)
 }
 
 Yobit.prototype.addTrade = function addTrade(callback, symbol, type, amount, price)
